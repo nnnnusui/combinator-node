@@ -1,12 +1,12 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Combinator } from "../main";
 import { chain } from "./chain";
-import { Combinators, Tupled } from "./type/Combinators";
+import { Combinators, ContextFrom, Tupled } from "./type/Combinators";
 
-export const chainN = <Context, T extends Combinators<Context>>(
+export const chainN = <T extends Combinators<any>>(
   ...combinators: T
-): Combinator<Context, Tupled<T>> => {
-  const it = (combinators: Combinators<Context>): any => {
+): Combinator<ContextFrom<T>, Tupled<T>> => {
+  const it = (combinators: Combinators<ContextFrom<T>>): any => {
     const [head, ...tails] = combinators;
     if (!tails) return head;
     return chain(head, it(tails));

@@ -1,12 +1,12 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Combinator } from "../main";
 import { or } from "./or";
-import { Combinators, Unified } from "./type/Combinators";
+import { Combinators, ContextFrom, Unified } from "./type/Combinators";
 
-export const orN = <Context, T extends Combinators<Context>>(
+export const orN = <T extends Combinators<any>>(
   ...combinators: T
-): Combinator<Context, Unified<T>> => {
-  const it = (combinators: Combinators<Context>): any => {
+): Combinator<ContextFrom<T>, Unified<T>> => {
+  const it = (combinators: Combinators<ContextFrom<T>>): any => {
     const [head, ...tails] = combinators;
     if (!tails) return head;
     return or(head, it(tails));
