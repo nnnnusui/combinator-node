@@ -1,0 +1,38 @@
+{
+  "name": "combinator",
+  "version": "0.1.0",
+  "description": "combinator functions",
+  "main": "./dist/main.js",
+  "scripts": {
+    "clean": "rm -r ./dist",
+    "lint:prettier": "prettier src --check",
+    "lint:eslint": "eslint src",
+    "lint": "run-p lint:*",
+    "fix:prettier": "npm run lint:prettier -- --write",
+    "fix:eslint": "npm run lint:eslint -- --fix",
+    "fix": "run-s fix:*",
+    "compile": "tsc -p ./",
+    "run": "node dist/main.js",
+    "test": "mocha --require ts-node/register --watch-extensions ts \"src/test/**/*.ts\"",
+    "dev": "run-s fix compile",
+    "monitor": "nodemon -e ts --ignore \"dist/*\" --exec \"npm run dev\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/mocha": "^8.2.1",
+    "@types/node": "^14.14.35",
+    "@typescript-eslint/eslint-plugin": "^4.18.0",
+    "@typescript-eslint/parser": "^4.18.0",
+    "chai": "^4.3.4",
+    "eslint": "^7.22.0",
+    "eslint-plugin-prettier": "^3.3.1",
+    "mocha": "^8.3.2",
+    "nodemon": "^2.0.7",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^2.2.1",
+    "ts-node": "^9.1.1",
+    "typescript": "^4.2.3"
+  }
+}
