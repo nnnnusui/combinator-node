@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Combinator } from "../main";
 import { chain } from "./chain";
+import { convert } from "./convert";
 import { Combinators, ContextFrom, Tupled } from "./type/Combinators";
 
 export const chainN = <T extends Combinators<any>>(
@@ -9,7 +10,7 @@ export const chainN = <T extends Combinators<any>>(
   const it = (combinators: Combinators<ContextFrom<T>>): any => {
     const [head, ...tails] = combinators;
     if (!tails) return head;
-    return chain(head, it(tails));
+    return convert(chain(head, it(tails)), (head, tails) => [head, ...tails]);
   };
   return it(combinators);
 };
