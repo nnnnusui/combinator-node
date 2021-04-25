@@ -1,5 +1,5 @@
 {
-  "name": "combinator",
+  "name": "combinator-node",
   "version": "1.0.0",
   "description": "combinator functions",
   "main": "./dist/main.js",
