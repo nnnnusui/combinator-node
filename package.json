@@ -1,8 +1,9 @@
 {
   "name": "combinator-node",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "combinator functions",
-  "main": "./dist/main.js",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
     "clean": "rm -r ./dist",
     "lint:prettier": "prettier src --check",
