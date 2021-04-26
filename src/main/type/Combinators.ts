@@ -3,6 +3,7 @@
 import { Combinator } from "./Combinator";
 
 export type Combinators<T> = Combinator<T, any>[];
+export type AnyCombinators = Combinators<any>;
 export type ContextFrom<T> = T extends Combinators<infer T> ? T : never;
 type OkFrom<T> = T extends Combinator<any, infer T> ? T : never;
 export type Unified<T extends Combinators<any>> = OkFrom<T[number]>;

@@ -1,11 +1,16 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Combinator } from "../main";
 import { or } from "./or";
-import { Combinators, ContextFrom, Unified } from "./type/Combinators";
+import {
+  AnyCombinators,
+  Combinators,
+  ContextFrom,
+  Unified,
+} from "./type/Combinators";
 
-export const orN = <T extends Combinators<any>>(
+export const orN = <T extends AnyCombinators>(
   ...combinators: T
 ): Combinator<ContextFrom<T>, Unified<T>> => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const it = (combinators: Combinators<ContextFrom<T>>): any => {
     const [head, ...tails] = combinators;
     if (tails.length <= 0) return head;
