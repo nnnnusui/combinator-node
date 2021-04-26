@@ -1,6 +1,6 @@
 {
   "name": "combinator-node",
-  "version": "1.1.7",
+  "version": "1.1.8",
   "description": "combinator functions",
   "main": "dist/main.js",
   "types": "dist/main.d.ts",
