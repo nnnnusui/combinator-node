@@ -12,8 +12,8 @@ export const orN = <T extends AnyCombinators>(
 ): Combinator<ContextFrom<T>, Unified<T>> => {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const it = (combinators: Combinators<ContextFrom<T>>): any => {
+    if (combinators.length <= 1) return combinators[0];
     const [head, ...tails] = combinators;
-    if (tails.length <= 0) return head;
     return or(head, it(tails));
   };
   return it(combinators);
