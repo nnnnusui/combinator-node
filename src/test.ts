@@ -1,4 +1,3 @@
-
 import { chainN } from "./main/chainN";
 import { Combinator } from "./main/type/Combinator";
 
