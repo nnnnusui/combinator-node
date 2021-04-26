@@ -9,3 +9,6 @@ export type Unified<T extends Combinators<any>> = OkFrom<T[number]>;
 export type Tupled<T extends Combinators<any>> = {
   [Key in keyof T]: OkFrom<T[Key]>;
 };
+export type Last<T extends any[]> = T extends [...any, infer Last]
+  ? Last
+  : never;
