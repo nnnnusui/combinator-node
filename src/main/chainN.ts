@@ -11,11 +11,13 @@ import {
 export const chainN = <T extends AnyCombinators>(
   ...combinators: T
 ): Combinator<ContextFrom<T>, Tupled<T>> => {
+  const it = (
+    combinators: Combinators<ContextFrom<T>>
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const it = (combinators: Combinators<ContextFrom<T>>): any => {
-    if (combinators.length <= 1) return convert(combinators[0], (it) => [it]);
+  ): Combinator<ContextFrom<T>, any> => {
     const [head, ...tails] = combinators;
-    return convert(chain(head, it(tails)), (head, tails) => [head, ...tails]);
+    if (tails.length < 1) return head;
+    return convert(chain(head, it(tails)), ([head, tails]) => [head, ...tails]);
   };
   return it(combinators);
 };
