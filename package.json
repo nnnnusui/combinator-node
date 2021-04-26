@@ -14,8 +14,8 @@
     "fix": "run-s fix:*",
     "compile": "tsc -p ./",
     "run": "node dist/main.js",
-    "test": "mocha --require ts-node/register --watch-extensions ts \"src/test/**/*.ts\"",
-    "dev": "run-s fix compile",
+    "test": "mocha --require ts-node/register --watch-extensions ts \"src/test.ts\"",
+    "dev": "run-s fix compile test",
     "monitor": "nodemon -e ts --ignore \"dist/*\" --exec \"npm run dev\""
   },
   "keywords": [],
