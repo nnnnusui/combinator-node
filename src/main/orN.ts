@@ -8,7 +8,7 @@ export const orN = <T extends Combinators<any>>(
 ): Combinator<ContextFrom<T>, Unified<T>> => {
   const it = (combinators: Combinators<ContextFrom<T>>): any => {
     const [head, ...tails] = combinators;
-    if (!tails) return head;
+    if (tails.length <= 0) return head;
     return or(head, it(tails));
   };
   return it(combinators);
